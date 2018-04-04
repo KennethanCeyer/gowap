@@ -125,29 +125,52 @@ $ git clone git@github.com:personal-nickname/personal-project.git
 
 ## :package: Installation
 
-go
+#### :yellow_heart: go
 
 ```bash
-$ go get git@github.com:personal-nickname/personal-project.git
-Cloning into 'personal-project'...
-remote: Counting objects: 514. done.
-remote: Compressing objects: 100% (402/402). done.
-remote: Total 514 (delta 362). reused 108 (delta 56)
+$ go get github.com/KennethanCeyer/gowap
+$ gowap -v
+NAME:
+   gowap - simple ssh swap tool
+
+USAGE:
+   gowap.exe [global options] command [command options] [arguments...]
+
+VERSION:
+   x.x.x
+
+AUTHOR:
+   kenneth ceyer <https://github.com/KennethanCeyer>
+
+COMMANDS:
+     init, i    initialize ssh path
+     go, g      swap ssh profile
+     remove, r  remove ssh profile
+     change, c  change ssh profile
+     list, l    show list ssh profiles
+     search, s  search ssh profile
+     help, h    Shows a list of commands or help for one command
+     ...
+
+GLOBAL OPTIONS:
+   --help, -h     show help
+   --version, -v  print the version
+   ...
 ```
 
-linux
+#### :broken_heart: linux (still yet not supported)
 
 ```bash
 $ apt-get install gowap
 ```
 
-Mac
+#### :broken_heart: Mac (still yet not supported)
 
 ```bash
 $ brew install gowap
 ```
 
-Windows (still yet not supported)
+#### :broken_heart: Windows (still yet not supported)
 
 ```bash
 $ choco install gowap
