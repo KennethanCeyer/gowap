@@ -21,8 +21,8 @@ The more star in this repository, the more nervous the maintainer will be and wi
 
 #### the goal of this project is quite simple
 
-- ssh-key change must be simple and quick
-- you can set alias name for each of the ssh keys
+- ssh-key changes must be simple and quick
+- you can set an alias name for each of the ssh keys
 - it could be nice, if this cli can support to register your ssh-key to github by using api
 
 ## :triangular_ruler: Blueprint
