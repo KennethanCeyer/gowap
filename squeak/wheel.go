@@ -1,9 +1,9 @@
 package squeak
 
 import (
-	"github.com/KennethanCeyer/gowap/logger"
 	"os"
 	"path/filepath"
+	"github.com/KennethanCeyer/gowap/logger"
 )
 
 func checkDirExists(path string) error {
@@ -28,7 +28,7 @@ func createProject(path string) error {
 		return err
 	}
 	logger := logger.New()
-	logger.Infof("%s file is created")
+	logger.Debugln("%s file is created")
 	return nil
 }
 

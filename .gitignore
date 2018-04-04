@@ -1,21 +1,10 @@
-# Binaries for programs and plugins
+gowap
+.idea
 *.exe
 *.dll
 *.so
 *.dylib
-gowap
-
-# JetBrains GoLand
-.idea
-
-# Test binary, build with `go test -c`
 *.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
 *.out
-
-# Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
 .glide/
-
-# Dependency vendor file
 vendor/

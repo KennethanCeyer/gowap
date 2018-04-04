@@ -1,11 +1,9 @@
 package cmd
 
 import (
-	"fmt"
-	"github.com/KennethanCeyer/gowap/squeak"
-	"github.com/urfave/cli"
 	"os/user"
-	"path/filepath"
+	"github.com/urfave/cli"
+	"github.com/KennethanCeyer/gowap/squeak"
 )
 
 // CommandInit is used for initialize gowap file on current user path(PWD)

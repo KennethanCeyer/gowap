@@ -4,7 +4,6 @@ import (
 	"log"
 	"os"
 	"fmt"
-	"github.com/fatih/color"
 	"strings"
 )
 

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/KennethanCeyer/gowap/cmd"
-	"github.com/urfave/cli"
 	"os"
+	"github.com/urfave/cli"
+	"github.com/KennethanCeyer/gowap/cmd"
 )
 
 var (
