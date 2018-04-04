@@ -31,15 +31,3 @@ func createProject(path string) error {
 	logger.Debugln("%s file is created")
 	return nil
 }
-
-func CreateProject(path string, i string) error {
-	err := checkDirExists(path)
-	if err != nil {
-		return err
-	}
-	err = createProject(filepath.Join(path, i))
-	if err != nil {
-		return err
-	}
-	return nil
-}

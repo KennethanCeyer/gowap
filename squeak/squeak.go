@@ -11,9 +11,9 @@ const (
 	SshIdentifier     = ".ssh"
 )
 
-// Node is managing of working directory
+// Squeak is managing of working directory
 // It searching the root of application working directory
-type Node struct {
+type Squeak struct {
 	Pwd string
 }
 
@@ -31,9 +31,9 @@ func isProjectPath(path string) (bool, error) {
 }
 
 // Trace parent and when the parent doesn't exists or invalid it will return nil
-func traceParent(node *Node) (*Node, bool, error) {
-	parentPath := filepath.Join(node.Pwd, "..")
-	parentNode := &Node{
+func traceParent(squeak *Squeak) (*Squeak, bool, error) {
+	parentPath := filepath.Join(squeak.Pwd, "..")
+	parentNode := &Squeak{
 		Pwd: parentPath,
 	}
 	tracePathIsProject, err := isProjectPath(parentPath)
@@ -45,15 +45,15 @@ func traceParent(node *Node) (*Node, bool, error) {
 
 // Trace root and the parent is root or invalid it will be end
 // This method is based of tail recursion
-func traceRoot(node *Node) (*Node, error) {
-	tracePathIsProject, err := isProjectPath(node.Pwd)
+func traceRoot(squeak *Squeak) (*Squeak, error) {
+	tracePathIsProject, err := isProjectPath(squeak.Pwd)
 	if err != nil {
 		return nil, err
 	}
 	if tracePathIsProject {
-		return node, nil
+		return squeak, nil
 	}
-	parentNode, isRoot, err := traceParent(node)
+	parentNode, isRoot, err := traceParent(squeak)
 	if err != nil {
 		return nil, err
 	}
@@ -68,6 +68,6 @@ func traceRoot(node *Node) (*Node, error) {
 
 // Trace root of working directory
 // If root doesn't exists or invalid return will be nil
-func (n *Node) GetRoot() (*Node, error) {
+func (n *Squeak) GetRoot() (*Squeak, error) {
 	return traceRoot(n)
 }
