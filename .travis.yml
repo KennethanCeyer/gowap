@@ -7,14 +7,18 @@ go:
 env:
   global:
     - COVERAGE_PATH=coverage/coverage.out
+    - CC_TEST_REPORTER_ID=e17727311c0dc148e2c952fb910823f3222f15b017fa5e177d2be8f0fecd9e3b
+    - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/)
 install: true
 before_script:
   - mkdir ./coverage
-  - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/)
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
   - go get -t ./...
   - go get github.com/golang/lint/golint
   - go get golang.org/x/tools/cmd/cover
   - go get github.com/mattn/goveralls
+  - ./cc-test-reporter before-build
 script:
   - sudo sh ./.travis.gogenerate.sh
   - sudo sh ./.travis.gofmt.sh
@@ -22,3 +26,4 @@ script:
 after_success:
   - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
   - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
+  - ./cc-test-reporter after-build
