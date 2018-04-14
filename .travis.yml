@@ -1,0 +1,12 @@
+language: go
+  go:
+    - "1.x"
+    - "1.8"
+    - "1.10.x"
+    - master
+install: true
+before_script:
+  - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/)
+  - go get github.com/golang/lint/golint
+script:
+  - golint -set_exit_status $(go list ./...)
