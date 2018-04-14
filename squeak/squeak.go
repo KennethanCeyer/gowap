@@ -1,6 +1,8 @@
 package squeak
 
-import "fmt"
+import (
+	"fmt"
+)
 
 const (
 	ProjectIdentifier = ".gowap"
@@ -13,9 +15,14 @@ type Squeak struct {
 	KeyPath string
 }
 
-func New() Squeak {
-	var squeak Squeak
+func New() *Squeak {
+	var squeak = new(Squeak)
 	squeak.ProjectPath = fmt.Sprintf("~/%s", ProjectIdentifier)
 	squeak.KeyPath = fmt.Sprintf("~/%s", SshIdentifier)
 	return squeak
+}
+
+func (s *Squeak) initialize() error {
+	s.createProjectIfEmpty()
+	return nil
 }
