@@ -3,7 +3,6 @@ package logger
 import (
 	"log"
 	"os"
-	"fmt"
 	"strings"
 )
 
