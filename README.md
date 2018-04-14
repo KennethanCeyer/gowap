@@ -187,3 +187,5 @@ $ choco install gowap
 gowap is under Apache 2.0 license
 
 you can, of course. download it, use it, modify it
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FKennethanCeyer%2Fgowap.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FKennethanCeyer%2Fgowap?ref=badge_shield)
