@@ -10,9 +10,6 @@ env:
     - CODECOV_TOKEN=1c147a24-d455-4864-878c-e0ece3229a2b
     - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/)
 install: true
-before_install:
-  - go vet ./...
-  - diff -u <(echo -n) <(gofmt -d -s .)
 before_script:
   - mkdir ./coverage
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -24,6 +21,7 @@ before_script:
   - ./cc-test-reporter before-build
 script:
   - go test -v -race -coverprofile=$COVERAGE_PATH ./...
+  - go vet ./...
 after_success:
   - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
   - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
