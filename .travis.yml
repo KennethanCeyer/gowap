@@ -27,4 +27,4 @@ script:
 after_success:
   - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
   - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-  - ./cc-test-reporter after-build
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
