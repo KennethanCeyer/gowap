@@ -1,5 +1,4 @@
 language: go
-sudo: false
 go:
   - "1.x"
   - "1.8"
@@ -21,8 +20,6 @@ before_script:
   - go get github.com/mattn/goveralls
   - ./cc-test-reporter before-build
 script:
-  - ./.travis.gogenerate.sh
-  - ./.travis.gofmt.sh
   - go test -v -race -coverprofile=$COVERAGE_PATH ./...
 after_success:
   - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
