@@ -5,6 +5,7 @@
 <p align="center">
     <a href="https://travis-ci.org/KennethanCeyer/gowap"><img src="https://travis-ci.org/KennethanCeyer/gowap.svg?branch=master" alt="Build Status" /></a>
     <a href="https://codeclimate.com/github/KennethanCeyer/gowap/test_coverage"><img src="https://api.codeclimate.com/v1/badges/f8cb6d015910de13f018/test_coverage" alt="Test Coverage"></a>
+    <a href='https://coveralls.io/github/KennethanCeyer/gowap?branch=feature%2Fadd-ci-environment'><img src='https://coveralls.io/repos/github/KennethanCeyer/gowap/badge.svg?branch=feature%2Fadd-ci-environment' alt='Coverage Status' /></a>
 </p>
 <p align="center">
   <a href="https://goreportcard.com/report/github.com/KennethanCeyer/gowap"><img src="https://goreportcard.com/badge/github.com/KennethanCeyer/gowap" alt="Go Report Card"></a>
