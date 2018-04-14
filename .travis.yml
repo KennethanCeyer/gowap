@@ -4,9 +4,17 @@ language: go
     - "1.8"
     - "1.10.x"
     - master
+env:
+  global:
+    - COVERAGE_PATH=coverage/coverage.out
 install: true
 before_script:
   - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/)
   - go get github.com/golang/lint/golint
+  - go get golang.org/x/tools/cmd/cover
+  - go get github.com/mattn/goveralls
 script:
+  - go test -v -covermode=count -coverprofile=$COVERAGE_PATH
   - golint -set_exit_status $(go list ./...)
+after_script:
+  - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
