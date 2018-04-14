@@ -25,7 +25,7 @@ func initApp(app *cli.App) *cli.App {
 			Name:    "add",
 			Aliases: []string{"a"},
 			Usage:   "add ssh profile",
-			Action:  cmd.CommandGo,
+			Action:  cmd.CommandAdd,
 		},
 		{
 			Name:    "remove",

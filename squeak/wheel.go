@@ -2,11 +2,12 @@ package squeak
 
 import (
 	"os"
-	"path/filepath"
 	"github.com/KennethanCeyer/gowap/logger"
 )
 
-func checkDirExists(path string) error {
+var loggerInst = logger.New()
+
+func (s *Squeak) checkDirExists(path string) error {
 	_, err := os.Stat(path)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -17,17 +18,15 @@ func checkDirExists(path string) error {
 	return nil
 }
 
-func createProject(path string) error {
-	projectPath := filepath.Join(path, ProjectIdentifier)
-	_, err := os.Stat(projectPath)
+func (s *Squeak) createProjectIfEmpty() error {
+	_, err := os.Stat(s.ProjectPath)
 	if err != nil {
 		return AlreadyInitializedError()
 	}
-	err = os.Mkdir(path, 0755)
+	err = os.Mkdir(s.ProjectPath, 0755)
 	if err != nil {
 		return err
 	}
-	logger := logger.New()
-	logger.Debugln("%s file is created")
+	loggerInst.Debugln("%s file is created")
 	return nil
 }
