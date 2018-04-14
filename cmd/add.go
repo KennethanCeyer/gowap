@@ -17,7 +17,11 @@ func CommandAdd(c *cli.Context) error {
 	// load target key
 
 	var squeakInst = squeak.New()
-	squeakInst.initialize()
+	err := squeakInst.Initialize()
+
+	if err != nil {
+		return err
+	}
 
 	return nil
 }

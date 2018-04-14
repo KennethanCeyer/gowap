@@ -7,26 +7,26 @@ import (
 
 var loggerInst = logger.New()
 
-func (s *Squeak) checkDirExists(path string) error {
+func dirExists(path string) bool {
 	_, err := os.Stat(path)
 	if err != nil {
 		if os.IsNotExist(err) {
-			return PathNotFoundError(path)
+			return false
 		}
-		return err
 	}
-	return nil
+	return true
 }
 
 func (s *Squeak) createProjectIfEmpty() error {
-	_, err := os.Stat(s.ProjectPath)
-	if err != nil {
-		return AlreadyInitializedError()
+	if dirExists(s.ProjectPath) {
+		return nil
 	}
+
 	err = os.Mkdir(s.ProjectPath, 0755)
 	if err != nil {
 		return err
 	}
-	loggerInst.Debugln("%s file is created")
+
+	loggerInst.Debugln("gowap is initialized")
 	return nil
 }
