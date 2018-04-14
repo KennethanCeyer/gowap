@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	profile = ""
+	app *cli.App
 )
 
 // Initialize gowap cli application
@@ -65,6 +65,6 @@ func initApp(app *cli.App) *cli.App {
 // This is entry point of gowap
 // It will get arguments from user commands
 func main() {
-	app := initApp(cli.NewApp())
+	app = initApp(cli.NewApp())
 	app.Run(os.Args)
 }

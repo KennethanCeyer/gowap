@@ -3,7 +3,6 @@ package logger
 import (
 	"log"
 	"os"
-	"fmt"
 	"strings"
 )
 
@@ -56,7 +55,7 @@ func (l *Logger) Println(v ...interface{}) {
 
 func (l *Logger) Debug(v ...interface{}) {
 	if l.level <= LevelDebug {
-		logger.Print(fmt.Sprint("%s: %s", stateDebug, createMessage(v)))
+		logger.Printf("%s: %s", stateDebug, createMessage(v))
 	}
 }
 
