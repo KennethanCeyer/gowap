@@ -7,6 +7,7 @@ env:
   global:
     - COVERAGE_PATH=coverage/coverage.out
     - CC_TEST_REPORTER_ID=e17727311c0dc148e2c952fb910823f3222f15b017fa5e177d2be8f0fecd9e3b
+    - CODECOV_TOKEN=1c147a24-d455-4864-878c-e0ece3229a2b
     - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/)
 install: true
 before_install:
@@ -25,5 +26,5 @@ script:
   - go test -v -race -coverprofile=$COVERAGE_PATH ./...
 after_success:
   - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
   - ./cc-test-reporter after-build
