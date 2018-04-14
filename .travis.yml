@@ -1,6 +1,7 @@
 language: go
 go:
   - "1.x"
+  - "1.8"
   - "1.10.x"
   - master
 env:
@@ -20,7 +21,7 @@ before_script:
   - go get -v github.com/mattn/goveralls
   - ./cc-test-reporter before-build
 script:
-  - go test -v -race -coverprofile=$COVERAGE_PATH ./...
+  - ./travis.test.sh
   - go vet ./...
 after_success:
   - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
