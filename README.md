@@ -4,12 +4,13 @@
 </p>
 <p align="center">
     <a href="https://travis-ci.org/KennethanCeyer/gowap"><img src="https://travis-ci.org/KennethanCeyer/gowap.svg?branch=master" alt="Build Status" /></a>
+    <a href="https://codeclimate.com/github/KennethanCeyer/gowap/test_coverage"><img src="https://api.codeclimate.com/v1/badges/f8cb6d015910de13f018/test_coverage" alt="Test Coverage"></a>
 </p>
 <p align="center">
   <a href="https://goreportcard.com/report/github.com/KennethanCeyer/gowap"><img src="https://goreportcard.com/badge/github.com/KennethanCeyer/gowap" alt="Go Report Card"></a>
   <a href="https://codebeat.co/projects/github-com-kennethanceyer-gowap-master"><img src="https://codebeat.co/badges/8225c214-4c2b-49da-98d0-276cbccea9e8" alt="codebeat badge"></a>
+  <a href="https://www.codefactor.io/repository/github/kennethanceyer/gowap"><img src="https://www.codefactor.io/repository/github/kennethanceyer/gowap/badge" /></a>
   <a href="https://codeclimate.com/github/KennethanCeyer/gowap/maintainability"><img src="https://api.codeclimate.com/v1/badges/f8cb6d015910de13f018/maintainability" alt="Maintainability"></a>
-  <a href="https://codeclimate.com/github/KennethanCeyer/gowap/test_coverage"><img src="https://api.codeclimate.com/v1/badges/f8cb6d015910de13f018/test_coverage" alt="Test Coverage"></a>
 </p>
 
 ## :warning: Notice
