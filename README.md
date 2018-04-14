@@ -8,6 +8,7 @@
 <p align="center">
   <a href="https://goreportcard.com/report/github.com/KennethanCeyer/gowap"><img src="https://goreportcard.com/badge/github.com/KennethanCeyer/gowap" alt="Go Report Card"></a>
   <a href="https://codebeat.co/projects/github-com-kennethanceyer-gowap-master"><img src="https://codebeat.co/badges/8225c214-4c2b-49da-98d0-276cbccea9e8" alt="codebeat badge"></a>
+<a href="https://app.fossa.io/projects/git%2Bgithub.com%2FKennethanCeyer%2Fgowap?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2FKennethanCeyer%2Fgowap.svg?type=shield"/></a>
   <a href="https://codeclimate.com/github/KennethanCeyer/gowap/maintainability"><img src="https://api.codeclimate.com/v1/badges/f8cb6d015910de13f018/maintainability" alt="Maintainability"></a>
   <a href="https://codeclimate.com/github/KennethanCeyer/gowap/test_coverage"><img src="https://api.codeclimate.com/v1/badges/f8cb6d015910de13f018/test_coverage" alt="Test Coverage"></a>
 </p>
@@ -186,3 +187,6 @@ $ choco install gowap
 gowap is under Apache 2.0 license
 
 you can, of course. download it, use it, modify it
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FKennethanCeyer%2Fgowap.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FKennethanCeyer%2Fgowap?ref=badge_large)
