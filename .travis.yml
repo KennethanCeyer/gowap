@@ -16,8 +16,8 @@ before_script:
   - go get golang.org/x/tools/cmd/cover
   - go get github.com/mattn/goveralls
 script:
-  - sudo ./.travis.gogenerate.sh
-  - sudo ./.travis.gofmt.sh
+  - sudo sh ./.travis.gogenerate.sh
+  - sudo sh ./.travis.gofmt.sh
   - go test -v -race -coverprofile=$COVERAGE_PATH
 after_success:
   - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
