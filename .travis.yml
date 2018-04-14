@@ -18,7 +18,6 @@ before_script:
 script:
   - ./.travis.gogenerate.sh
   - ./.travis.gofmt.sh
-  - ./.travis.govet.sh
   - go test -v -covermode=count -coverprofile=$COVERAGE_PATH
 after_script:
   - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
