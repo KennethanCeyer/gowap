@@ -148,12 +148,12 @@ AUTHOR:
    kenneth ceyer <https://github.com/KennethanCeyer>
 
 COMMANDS:
-     init, i    initialize ssh path
-     go, g      swap ssh profile
+     add a      add ssh profile
      remove, r  remove ssh profile
      change, c  change ssh profile
      list, l    show list ssh profiles
      search, s  search ssh profile
+     archive h  archive ssh profile
      help, h    Shows a list of commands or help for one command
      ...
 
