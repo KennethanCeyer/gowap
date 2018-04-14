@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/KennethanCeyer/gowap/cmd"
-	"github.com/urfave/cli"
 	"os"
+	"github.com/urfave/cli"
+	"github.com/KennethanCeyer/gowap/cmd"
 )
 
 var (
@@ -22,16 +22,10 @@ func initApp(app *cli.App) *cli.App {
 
 	app.Commands = []cli.Command{
 		{
-			Name:    "init",
-			Aliases: []string{"i"},
-			Usage:   "initialize ssh path",
-			Action:  cmd.CommandInit,
-		},
-		{
-			Name:    "go",
-			Aliases: []string{"g"},
-			Usage:   "swap ssh profile",
-			Action:  cmd.CommandGo,
+			Name:    "add",
+			Aliases: []string{"a"},
+			Usage:   "add ssh profile",
+			Action:  cmd.CommandAdd,
 		},
 		{
 			Name:    "remove",
@@ -56,6 +50,12 @@ func initApp(app *cli.App) *cli.App {
 			Aliases: []string{"s"},
 			Usage:   "search ssh profile",
 			Action:  cmd.CommandSearch,
+		},
+		{
+			Name:    "archive",
+			Aliases: []string{"h"},
+			Usage:   "archive ssh profile",
+			Action:  cmd.CommandArchive,
 		},
 	}
 

@@ -1,45 +1,32 @@
 package squeak
 
 import (
-	"github.com/KennethanCeyer/gowap/logger"
 	"os"
-	"path/filepath"
+	"github.com/KennethanCeyer/gowap/logger"
 )
 
-func checkDirExists(path string) error {
+var loggerInst = logger.New()
+
+func dirExists(path string) bool {
 	_, err := os.Stat(path)
 	if err != nil {
 		if os.IsNotExist(err) {
-			return PathNotFoundError(path)
+			return false
 		}
-		return err
 	}
-	return nil
+	return true
 }
 
-func createProject(path string) error {
-	projectPath := filepath.Join(path, ProjectIdentifier)
-	_, err := os.Stat(projectPath)
-	if err != nil {
-		return AlreadyInitializedError()
+func (s *Squeak) createProjectIfEmpty() error {
+	if dirExists(s.ProjectPath) {
+		return nil
 	}
-	err = os.Mkdir(path, 0755)
-	if err != nil {
-		return err
-	}
-	logger := logger.New()
-	logger.Infof("%s file is created")
-	return nil
-}
 
-func CreateProject(path string, i string) error {
-	err := checkDirExists(path)
+	err = os.Mkdir(s.ProjectPath, 0755)
 	if err != nil {
 		return err
 	}
-	err = createProject(filepath.Join(path, i))
-	if err != nil {
-		return err
-	}
+
+	loggerInst.Debugln("gowap is initialized")
 	return nil
 }

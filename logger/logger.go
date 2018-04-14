@@ -4,7 +4,6 @@ import (
 	"log"
 	"os"
 	"fmt"
-	"github.com/fatih/color"
 	"strings"
 )
 
@@ -56,19 +55,19 @@ func (l *Logger) Println(v ...interface{}) {
 }
 
 func (l *Logger) Debug(v ...interface{}) {
-	if l.level >= LevelDebug {
+	if l.level <= LevelDebug {
 		logger.Print(fmt.Sprint("%s: %s", stateDebug, createMessage(v)))
 	}
 }
 
 func (l *Logger) Debugf(format string, v ...interface{}) {
-	if l.level >= LevelDebug {
+	if l.level <= LevelDebug {
 		logger.Printf(format, v)
 	}
 }
 
 func (l *Logger) Debugln(v ...interface{}) {
-	if l.level >= LevelDebug {
+	if l.level <= LevelDebug {
 		logger.Println(v)
 	}
 }

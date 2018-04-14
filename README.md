@@ -1,6 +1,11 @@
 <p align="center"><img width="150" src="https://www.pigno.se/static/assets/images/gowap-logo.svg" /></p>
 <p align="center">
   <a href="https://github.com/KennethanCeyer/gowap"><img src="https://img.shields.io/github/release/KennethanCeyer/gowap.svg" alt="Github Release"></a>
+</p>
+<p align="center">
+    <a href="https://travis-ci.org/KennethanCeyer/gowap"><img src="https://travis-ci.org/KennethanCeyer/gowap.svg?branch=master" alt="Build Status" /></a>
+</p>
+<p align="center">
   <a href="https://goreportcard.com/report/github.com/KennethanCeyer/gowap"><img src="https://goreportcard.com/badge/github.com/KennethanCeyer/gowap" alt="Go Report Card"></a>
   <a href="https://codebeat.co/projects/github-com-kennethanceyer-gowap-master"><img src="https://codebeat.co/badges/8225c214-4c2b-49da-98d0-276cbccea9e8" alt="codebeat badge"></a>
   <a href="https://codeclimate.com/github/KennethanCeyer/gowap/maintainability"><img src="https://api.codeclimate.com/v1/badges/f8cb6d015910de13f018/maintainability" alt="Maintainability"></a>
@@ -21,8 +26,8 @@ The more star in this repository, the more nervous the maintainer will be and wi
 
 #### the goal of this project is quite simple
 
-- ssh-key change must be simple and quick
-- you can set alias name for each of the ssh keys
+- ssh-key changes must be simple and quick
+- you can set an alias name for each of the ssh keys
 - it could be nice, if this cli can support to register your ssh-key to github by using api
 
 ## :triangular_ruler: Blueprint
@@ -125,29 +130,52 @@ $ git clone git@github.com:personal-nickname/personal-project.git
 
 ## :package: Installation
 
-go
+#### :yellow_heart: go
 
 ```bash
-$ go get git@github.com:personal-nickname/personal-project.git
-Cloning into 'personal-project'...
-remote: Counting objects: 514. done.
-remote: Compressing objects: 100% (402/402). done.
-remote: Total 514 (delta 362). reused 108 (delta 56)
+$ go get github.com/KennethanCeyer/gowap
+$ gowap -v
+NAME:
+   gowap - simple ssh swap tool
+
+USAGE:
+   gowap.exe [global options] command [command options] [arguments...]
+
+VERSION:
+   x.x.x
+
+AUTHOR:
+   kenneth ceyer <https://github.com/KennethanCeyer>
+
+COMMANDS:
+     init, i    initialize ssh path
+     go, g      swap ssh profile
+     remove, r  remove ssh profile
+     change, c  change ssh profile
+     list, l    show list ssh profiles
+     search, s  search ssh profile
+     help, h    Shows a list of commands or help for one command
+     ...
+
+GLOBAL OPTIONS:
+   --help, -h     show help
+   --version, -v  print the version
+   ...
 ```
 
-linux
+#### :broken_heart: linux (still yet not supported)
 
 ```bash
 $ apt-get install gowap
 ```
 
-Mac
+#### :broken_heart: Mac (still yet not supported)
 
 ```bash
 $ brew install gowap
 ```
 
-Windows (still yet not supported)
+#### :broken_heart: Windows (still yet not supported)
 
 ```bash
 $ choco install gowap
