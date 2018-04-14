@@ -9,7 +9,7 @@ env:
     - COVERAGE_PATH=coverage/coverage.out
 install: true
 before_script:
-  - mkdir $COVERAGE_PATH
+  - mkdir ./coverage
   - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/)
   - go get -t ./...
   - go get github.com/golang/lint/golint
