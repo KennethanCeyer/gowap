@@ -23,7 +23,7 @@ func initApp(app *cli.App) *cli.App {
 	app.Commands = []cli.Command{
 		{
 			Name:    "add",
-			Aliases: []string{"g"},
+			Aliases: []string{"a"},
 			Usage:   "add ssh profile",
 			Action:  cmd.CommandGo,
 		},
@@ -53,7 +53,7 @@ func initApp(app *cli.App) *cli.App {
 		},
 		{
 			Name:    "archive",
-			Aliases: []string{"s"},
+			Aliases: []string{"h"},
 			Usage:   "archive ssh profile",
 			Action:  cmd.CommandArchive,
 		},
