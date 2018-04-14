@@ -18,6 +18,7 @@ before_script:
 script:
   - ./.travis.gogenerate.sh
   - ./.travis.gofmt.sh
-  - go test -v -covermode=count -coverprofile=$COVERAGE_PATH
-after_script:
+  - go test -v -race -covermode=count -coverprofile=$COVERAGE_PATH
+after_success:
   - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
+  - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
