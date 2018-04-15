@@ -1,24 +1,18 @@
 package squeak
 
 import (
-	"fmt"
+	"github.com/KennethanCeyer/gowap/exception"
 )
 
-const (
-	ErrorMsgAlreadyInitialized  = "gowap is already initialized"
-	ErrorCodeAlreadyInitialized = 001
-	ErrorMsgPathNotFound        = "'%s' path doesn't exists"
-	ErrorCodePathNotFound       = 100
+var (
+	ErrorMsgAlreadyInitialized = exception.Pair { "gowap is already initialized", 0x0001 }
+	ErrorMsgPathNotFound       = exception.Pair { "'%s' path doesn't exists", 0x0002 }
 )
-
-func Error(msg string, code int, a ...interface{}) error {
-	return fmt.Errorf(fmt.Sprintf("error(%d): %s", code, msg), a)
-}
 
 func AlreadyInitializedError() error {
-	return Error(ErrorMsgAlreadyInitialized, ErrorCodeAlreadyInitialized)
+	return exception.Error(ErrorMsgAlreadyInitialized)
 }
 
 func PathNotFoundError(path string) error {
-	return Error(ErrorMsgPathNotFound, ErrorCodePathNotFound, path)
+	return exception.Error(ErrorMsgPathNotFound)
 }
