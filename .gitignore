@@ -1,5 +1,6 @@
 gowap
 .idea
+c.out
 *.exe
 *.dll
 *.so
