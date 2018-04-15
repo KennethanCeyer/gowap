@@ -10,3 +10,5 @@ for d in $(go list ./... | grep -v vendor); do
         rm coverage.chunk.out
     fi
 done
+
+cat coverage/coverage.out > c.out
