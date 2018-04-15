@@ -3,6 +3,7 @@ package cmd
 import (
 	"github.com/urfave/cli"
 	"github.com/KennethanCeyer/gowap/squeak"
+	"github.com/KennethanCeyer/gowap/cmd/add"
 )
 
 // CommandAdd is used for swap to gowap profile
@@ -16,8 +17,13 @@ func CommandAdd(c *cli.Context) error {
 	// delete current key
 	// load target key
 
+	err := add.Validate(c)
+	if err != nil {
+		return err
+	}
+
 	var squeakInst = squeak.New()
-	err := squeakInst.Initialize()
+	err = squeakInst.Initialize()
 
 	if err != nil {
 		return err
