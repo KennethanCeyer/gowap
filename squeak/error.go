@@ -5,8 +5,8 @@ import (
 )
 
 var (
-	ErrorMsgAlreadyInitialized = exception.Pair { "gowap is already initialized", 0x0001 }
-	ErrorMsgPathNotFound       = exception.Pair { "'%s' path doesn't exists", 0x0002 }
+	ErrorMsgAlreadyInitialized = exception.Pair { Message: "gowap is already initialized", Code: 0x0001 }
+	ErrorMsgPathNotFound       = exception.Pair { Message: "'%s' path doesn't exists", Code: 0x0002 }
 )
 
 func AlreadyInitializedError() error {
