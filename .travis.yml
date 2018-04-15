@@ -13,7 +13,6 @@ env:
     - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/)
 install: true
 before_script:
-  - mkdir ./coverage
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - go get -v -t ./...
