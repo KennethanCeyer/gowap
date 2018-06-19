@@ -2,10 +2,11 @@ package squeak
 
 import (
 	"fmt"
+	"github.com/KennethanCeyer/gowap/app"
 )
 
 const (
-	ErrorMsgAlreadyInitialized  = "gowap is already initialized"
+	ErrorMsgAlreadyInitialized  = "%s is already initialized"
 	ErrorCodeAlreadyInitialized = 001
 	ErrorMsgPathNotFound        = "'%s' path doesn't exists"
 	ErrorCodePathNotFound       = 100
@@ -16,7 +17,7 @@ func Error(msg string, code int, a ...interface{}) error {
 }
 
 func AlreadyInitializedError() error {
-	return Error(ErrorMsgAlreadyInitialized, ErrorCodeAlreadyInitialized)
+	return Error(ErrorMsgAlreadyInitialized, ErrorCodeAlreadyInitialized, app.AppName)
 }
 
 func PathNotFoundError(path string) error {

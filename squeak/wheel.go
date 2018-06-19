@@ -2,10 +2,12 @@ package squeak
 
 import (
 	"os"
-	"github.com/KennethanCeyer/gowap/logger"
+	"github.com/KennethanCeyer/gowap/peep"
+	"github.com/KennethanCeyer/gowap/app"
+	"fmt"
 )
 
-var loggerInst = logger.New()
+var log = peep.New(app.LogLevel)
 
 func dirExists(path string) bool {
 	_, err := os.Stat(path)
@@ -27,6 +29,6 @@ func (s *Squeak) createProjectIfEmpty() error {
 		return err
 	}
 
-	loggerInst.Debugln("gowap is initialized")
+	log.Debug(fmt.Sprintf("%v is initialized", app.AppName))
 	return nil
 }

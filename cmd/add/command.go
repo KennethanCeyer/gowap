@@ -5,3 +5,7 @@
  */
 
 package add
+
+const (
+	CommandName = "add"
+)

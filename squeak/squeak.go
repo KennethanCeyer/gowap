@@ -22,7 +22,8 @@ type Squeak struct {
 }
 
 func New() *Squeak {
-	var squeak = new(Squeak)
+	squeak := new(Squeak)
+	squeak.Initialize()
 	squeak.ProjectPath = filepath.Clean(fmt.Sprintf("%s/%s/%s", homeDir, SshIdentifier, ProjectIdentifier))
 	squeak.KeyPath = filepath.Clean(fmt.Sprintf("%s/%s", homeDir, SshIdentifier))
 	return squeak
@@ -36,5 +37,9 @@ func (s *Squeak) Initialize() error {
 	}
 
 	return nil
+}
+
+func (s *Squeak) Exists(name string) bool {
+	return false
 }
 
