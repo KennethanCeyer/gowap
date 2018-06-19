@@ -6,19 +6,12 @@
 
 package add
 
-import (
-	"fmt"
-)
+import "github.com/KennethanCeyer/gowap/exception"
 
-const (
-	ErrorMsgArgumentMustBeOne  = "%s command's arguments must be one"
-	ErrorCodeArgumentMustBeOne = 1000
+var (
+	ErrorArgumentMustBeOne  = exception.Pair { Message: "%s command's arguments must be one", Code: 0x1000 }
 )
-
-func Error(msg string, code int, a ...interface{}) error {
-	return fmt.Errorf(fmt.Sprintf("error(%d): %s", code, msg), a)
-}
 
 func AlreadyInitializedError() error {
-	return Error(ErrorMsgArgumentMustBeOne, ErrorCodeArgumentMustBeOne, CommandName)
+	return exception.Error(ErrorArgumentMustBeOne, CommandName)
 }

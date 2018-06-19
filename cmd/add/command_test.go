@@ -4,10 +4,4 @@
  * Apache 2.0 <https://www.apache.org/licenses/LICENSE-2.0>
  */
 
-package exception
-
-// Pair is general exception message definition type
-type Pair struct {
-	Message string
-	Code int
-}
+package add
