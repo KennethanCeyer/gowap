@@ -4,6 +4,7 @@ import (
 	"os"
 	"github.com/urfave/cli"
 	"github.com/KennethanCeyer/gowap/cmd"
+	gowapApp "github.com/KennethanCeyer/gowap/app"
 )
 
 var (
@@ -13,10 +14,10 @@ var (
 // Initialize gowap cli application
 // This function has declaration of commands, options
 func initApp(app *cli.App) *cli.App {
-	app.Name = appName
-	app.Usage = appUsage
-	app.Version = appVersion
-	app.Author = author
+	app.Name = gowapApp.AppName
+	app.Usage = gowapApp.AppUsage
+	app.Version = gowapApp.AppVersion
+	app.Author = gowapApp.Author
 
 	app.Flags = []cli.Flag{}
 
@@ -56,6 +57,12 @@ func initApp(app *cli.App) *cli.App {
 			Aliases: []string{"h"},
 			Usage:   "archive ssh profile",
 			Action:  cmd.CommandArchive,
+		},
+		{
+			Name:    "version",
+			Aliases: []string{"v"},
+			Usage:   "show current gowap version",
+			Action:  cmd.CommandVersion,
 		},
 	}
 
