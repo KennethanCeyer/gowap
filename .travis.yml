@@ -7,7 +7,7 @@ go:
   - master
 env:
   global:
-    - COVERAGE_PATH=coverage/coverage.out
+    - COVERAGE_PATH=coverage.out
     - CC_TEST_REPORTER_ID=e17727311c0dc148e2c952fb910823f3222f15b017fa5e177d2be8f0fecd9e3b
     - CODECOV_TOKEN=1c147a24-d455-4864-878c-e0ece3229a2b
     - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/)
@@ -17,11 +17,10 @@ before_script:
   - chmod +x ./cc-test-reporter
   - go get -v -t ./...
   - go get -v golang.org/x/lint/golint
-  - go get -v golang.org/x/tools/action/cover
   - go get -v github.com/mattn/goveralls
   - ./cc-test-reporter before-build
 script:
-  - ./.travis.test.sh
+  - go test -coverprofile=$COVERAGE_PATH
   - go vet ./...
 after_success:
   - $(go env GOPATH | awk 'BEGIN{FS=":"} {print $1}')/bin/goveralls -coverprofile=$COVERAGE_PATH -service=travis-ci
