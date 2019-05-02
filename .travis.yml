@@ -17,7 +17,7 @@ before_script:
   - chmod +x ./cc-test-reporter
   - go get -v -t ./...
   - go get -v github.com/golang/lint/golint
-  - go get -v golang.org/x/tools/cmd/cover
+  - go get -v golang.org/x/tools/action/cover
   - go get -v github.com/mattn/goveralls
   - ./cc-test-reporter before-build
 script:

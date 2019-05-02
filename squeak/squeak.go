@@ -1,14 +1,7 @@
 package squeak
 
 import (
-	"github.com/mitchellh/go-homedir"
-	"fmt"
-	"path/filepath"
-)
-
-const (
-	ProjectIdentifier = ".gowap"
-	SshIdentifier     = ".ssh"
+	"github.com/atrox/homedir"
 )
 
 var (
@@ -17,14 +10,14 @@ var (
 
 // Squeak is managing of ssh working directory
 type Squeak struct {
-	ProjectPath string
-	KeyPath string
+	Workspace  string
+	SSHKeyPath string
 }
 
 func New() *Squeak {
 	var squeak = new(Squeak)
-	squeak.ProjectPath = filepath.Clean(fmt.Sprintf("%s/%s/%s", homeDir, SshIdentifier, ProjectIdentifier))
-	squeak.KeyPath = filepath.Clean(fmt.Sprintf("%s/%s", homeDir, SshIdentifier))
+	squeak.Workspace = ProjectPath
+	squeak.SSHKeyPath = SSHKeyPath
 	return squeak
 }
 

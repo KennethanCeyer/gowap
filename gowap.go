@@ -1,9 +1,10 @@
 package main
 
 import (
-	"os"
+	"github.com/KennethanCeyer/gowap/action"
+	gowap "github.com/KennethanCeyer/gowap/app"
 	"github.com/urfave/cli"
-	"github.com/KennethanCeyer/gowap/cmd"
+	"os"
 )
 
 var (
@@ -13,10 +14,10 @@ var (
 // Initialize gowap cli application
 // This function has declaration of commands, options
 func initApp(app *cli.App) *cli.App {
-	app.Name = appName
-	app.Usage = appUsage
-	app.Version = appVersion
-	app.Author = author
+	app.Name = gowap.AppName
+	app.Usage = gowap.AppUsage
+	app.Version = gowap.AppVersion
+	app.Author = gowap.Author
 
 	app.Flags = []cli.Flag{}
 
@@ -25,37 +26,37 @@ func initApp(app *cli.App) *cli.App {
 			Name:    "add",
 			Aliases: []string{"a"},
 			Usage:   "add ssh profile",
-			Action:  cmd.CommandAdd,
+			Action:  action.CommandAdd,
 		},
 		{
 			Name:    "remove",
 			Aliases: []string{"r"},
 			Usage:   "remove ssh profile",
-			Action:  cmd.CommandRemove,
+			Action:  action.CommandRemove,
 		},
 		{
 			Name:    "change",
 			Aliases: []string{"c"},
 			Usage:   "change ssh profile",
-			Action:  cmd.CommandChange,
+			Action:  action.CommandChange,
 		},
 		{
 			Name:    "list",
 			Aliases: []string{"l"},
 			Usage:   "show list ssh profiles",
-			Action:  cmd.CommandList,
+			Action:  action.CommandList,
 		},
 		{
 			Name:    "search",
 			Aliases: []string{"s"},
 			Usage:   "search ssh profile",
-			Action:  cmd.CommandSearch,
+			Action:  action.CommandSearch,
 		},
 		{
 			Name:    "archive",
 			Aliases: []string{"h"},
 			Usage:   "archive ssh profile",
-			Action:  cmd.CommandArchive,
+			Action:  action.CommandArchive,
 		},
 	}
 
