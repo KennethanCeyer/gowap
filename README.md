@@ -131,6 +131,128 @@ your now key is 'home'
 $ git clone git@github.com:personal-nickname/personal-project.git
 ```
 
+#### features
+
+**add**
+
+add without nuts name
+
+> this case, default nuts name set to `home`
+
+```bash
+gowap add 
+```
+
+```bash
+# output
+? enter file in which to add the private key /Users/user/.ssh/id_rsa
+? enter file in which to add the public key /Users/user/.ssh/id_rsa.pub
+? `home` is already defined, Do you want to overwrite it? Yes
+INFO[0000] try to overwrite to `home`                    overwrite=true
+INFO[0000] new nuts has been added                       nuts=home
+```
+
+add with nuts name
+
+```bash
+gowap add {:name}
+```
+
+```bash
+# output
+? enter file in which to add the private key /Users/user/.ssh/id_rsa
+? enter file in which to add the public key /Users/user/.ssh/id_rsa.pub
+INFO[0000] new nuts has been added                       nuts={:name}
+```
+
+add with git config
+
+```bash
+gowap add --with git
+```
+
+```bash
+# output
+? enter file in which to add the private key /Users/user/.ssh/id_rsa
+? enter file in which to add the public key /Users/user/.ssh/id_rsa.pub
+INFO[0000] with git configuration                        git={"user": "xxx", "mail": "xxx", "autoSign": true, "signKey": "xxx"}
+INFO[0000] new nuts has been added                       nuts={:name}
+```
+
+**remove**
+
+remove without nuts name
+
+> this case, default nuts name set to `home`
+
+```bash
+gowap remove
+```
+
+```bash
+# output:
+? are you sure? Yes
+INFO[0000] `home` nuts has been removed                 nuts=home
+```
+
+remove with nuts name
+
+```bash
+gowap remove {:name}
+```
+
+```bash
+# output:
+? are you sure? Yes
+INFO[0000] `{:name}` nuts has been removed              nuts={:name}
+```
+
+**list**
+
+show list of nuts
+
+```bash
+gowap list
+```
+
+```bash
+# output
+* home
+company
+temporary
+user2
+```
+
+search list with keyword
+
+> keyword will include follows:
+> - git config values
+> - alias name
+> - nuts name
+
+```bash
+gowap list --keyword {:keyword}
+```
+
+```bash
+# output
+company | git user.name "kenneth ceyer"
+temporary | alias name "kenneth"
+```
+
+**version**
+
+show current gowap version
+
+```bash
+gowap version
+```
+
+```bash
+# output
+gowap version 0.0.1
+```
+
 ## :package: Installation
 
 #### :yellow_heart: go
@@ -151,13 +273,12 @@ AUTHOR:
    kenneth ceyer <https://github.com/KennethanCeyer>
 
 COMMANDS:
-     add a      add ssh profile
-     remove, r  remove ssh profile
-     change, c  change ssh profile
-     list, l    show list ssh profiles
-     search, s  search ssh profile
-     archive h  archive ssh profile
-     help, h    Shows a list of commands or help for one command
+     add a        add ssh profile
+     remove, r .  remove ssh profile
+     list, l      show list ssh profiles
+     archive h    archive ssh profile
+     help, h      show a list of commands or help for one command
+     version, v   show current gowap version
      ...
 
 GLOBAL OPTIONS:
