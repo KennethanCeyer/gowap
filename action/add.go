@@ -1,15 +1,17 @@
 package action
 
 import (
+	"fmt"
 	"github.com/KennethanCeyer/gowap/exception"
 	"github.com/KennethanCeyer/gowap/squeak"
+	"github.com/KennethanCeyer/gowap/utils"
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/cli"
 	"gopkg.in/AlecAivazis/survey.v1"
 	"path"
 )
 
-var qs = []*survey.Question{
+var addQs = []*survey.Question{
 	{
 		Name: "prikey",
 		Prompt: &survey.Input{
@@ -30,41 +32,54 @@ var qs = []*survey.Question{
 // Swap target profile must exists
 // Usage: gowap add [profile]
 func CommandAdd(c *cli.Context) error {
-	// TODO:
-	// validate current folder is gowap
-	// validate target profile exists
-	// sync if ENABLE_AUTO_SYNC option is enabled
-	// delete current key
-	// load target key
-
-	var archive string
+	nutsName := squeak.DefaultNutsName
 	if c.NArg() > 0 {
-		archive = c.Args().Get(0)
+		nutsName = c.Args().Get(0)
 	}
 
 	s := squeak.New()
-	err := s.Initialize()
-
-	if err != nil {
-		log.WithFields(log.Fields{
-			"code": exception.ErrorCodeIntialze,
-		}).Fatal(err)
-		return err
-	}
 
 	answers := struct {
 		PubKey string
 		PriKey string
 	}{}
 
-	if err = survey.Ask(qs, &answers); err != nil {
+	if err := survey.Ask(addQs, &answers); err != nil {
 		log.WithFields(log.Fields{
 			"code": exception.ErrorCodeGeneral,
 		}).Fatal(err)
 		return err
 	}
 
-	if err = s.Store(answers.PriKey, answers.PubKey, archive); err != nil {
+	nutsDir, err := s.GetProjectDir(path.Join(squeak.NutsPath, nutsName))
+	if err != nil {
+		log.WithFields(log.Fields{
+			"code": squeak.ErrorCodeStore,
+		}).Fatal(err)
+		return err
+	}
+
+	if utils.Exists(nutsDir) {
+		overwrite := true
+		prompt := &survey.Confirm{
+			Message: fmt.Sprintf("`%s` is already defined, Do you want to overwrite it?", nutsName),
+			Default: overwrite,
+		}
+		survey.AskOne(prompt, &overwrite, nil)
+
+		if overwrite {
+			log.WithFields(log.Fields{
+				"overwrite": overwrite,
+			}).Info(fmt.Sprintf("try to overwrite to `%s`", nutsName))
+		} else {
+			log.WithFields(log.Fields{
+				"overwrite": overwrite,
+			}).Info("gowap add process has been canceled")
+			return nil
+		}
+	}
+
+	if err = s.Store(answers.PriKey, answers.PubKey, nutsName); err != nil {
 		log.WithFields(log.Fields{
 			"code": squeak.ErrorCodeStore,
 		}).Fatal(err)
