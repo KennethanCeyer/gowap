@@ -1,24 +1,21 @@
+/*
+ * (C) 2017-2018 Kenneth Ceyer <kennethan@nhpcw.com>
+ * this is distributed under
+ * Apache 2.0 <https://www.apache.org/licenses/LICENSE-2.0>
+ */
+
 package squeak
 
 import (
-	"fmt"
+	"github.com/KennethanCeyer/gowap/exception"
 )
 
 const (
-	ErrorMsgAlreadyInitialized  = "gowap is already initialized"
-	ErrorCodeAlreadyInitialized = 001
-	ErrorMsgPathNotFound        = "'%s' path doesn't exists"
-	ErrorCodePathNotFound       = 100
+	ErrorCodeAleradyInitialized = 1
+	ErrorCodeStore              = 6000
 )
 
-func Error(msg string, code int, a ...interface{}) error {
-	return fmt.Errorf(fmt.Sprintf("error(%d): %s", code, msg), a)
-}
-
-func AlreadyInitializedError() error {
-	return Error(ErrorMsgAlreadyInitialized, ErrorCodeAlreadyInitialized)
-}
-
-func PathNotFoundError(path string) error {
-	return Error(ErrorMsgPathNotFound, ErrorCodePathNotFound, path)
-}
+var (
+	ErrorAlreadyInitialized = exception.Pair{Message: "%s is already initialized", Code: ErrorCodeAleradyInitialized}
+	ErrorStoreFileNotExists = exception.Pair{Message: "%s ssh key path `` does not exists", Code: ErrorCodeStore}
+)

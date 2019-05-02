@@ -1,8 +1,9 @@
 package action
 
 import (
-	"fmt"
+	"github.com/KennethanCeyer/gowap/exception"
 	"github.com/KennethanCeyer/gowap/squeak"
+	log "github.com/sirupsen/logrus"
 	"github.com/urfave/cli"
 	"gopkg.in/AlecAivazis/survey.v1"
 	"path"
@@ -36,10 +37,18 @@ func CommandAdd(c *cli.Context) error {
 	// delete current key
 	// load target key
 
-	var squeakInst = squeak.New()
-	err := squeakInst.Initialize()
+	var archive string
+	if c.NArg() > 0 {
+		archive = c.Args().Get(0)
+	}
+
+	s := squeak.New()
+	err := s.Initialize()
 
 	if err != nil {
+		log.WithFields(log.Fields{
+			"code": exception.ErrorCodeIntialze,
+		}).Fatal(err)
 		return err
 	}
 
@@ -49,7 +58,16 @@ func CommandAdd(c *cli.Context) error {
 	}{}
 
 	if err = survey.Ask(qs, &answers); err != nil {
-		fmt.Println(err.Error())
+		log.WithFields(log.Fields{
+			"code": exception.ErrorCodeGeneral,
+		}).Fatal(err)
+		return err
+	}
+
+	if err = s.Store(answers.PriKey, answers.PubKey, archive); err != nil {
+		log.WithFields(log.Fields{
+			"code": squeak.ErrorCodeStore,
+		}).Fatal(err)
 		return err
 	}
 

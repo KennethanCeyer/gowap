@@ -58,6 +58,12 @@ func initApp(app *cli.App) *cli.App {
 			Usage:   "archive ssh profile",
 			Action:  action.CommandArchive,
 		},
+		{
+			Name:    "version",
+			Aliases: []string{"v"},
+			Usage:   "show current gowap version",
+			Action:  action.CommandVersion,
+		},
 	}
 
 	return app
