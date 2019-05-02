@@ -15,9 +15,9 @@ install: true
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
-  - go get -v -t ./...
-  - go get -v golang.org/x/lint/golint
-  - go get -v github.com/mattn/goveralls
+  - go get -u -t ./...
+  - go get -u golang.org/x/lint/golint
+  - go get -u github.com/mattn/goveralls
   - ./cc-test-reporter before-build
 script:
   - go test -coverprofile=$COVERAGE_PATH ./...
