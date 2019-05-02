@@ -35,22 +35,10 @@ func initApp(app *cli.App) *cli.App {
 			Action:  action.CommandRemove,
 		},
 		{
-			Name:    "change",
-			Aliases: []string{"c"},
-			Usage:   "change ssh profile",
-			Action:  action.CommandChange,
-		},
-		{
 			Name:    "list",
 			Aliases: []string{"l"},
 			Usage:   "show list ssh profiles",
 			Action:  action.CommandList,
-		},
-		{
-			Name:    "search",
-			Aliases: []string{"s"},
-			Usage:   "search ssh profile",
-			Action:  action.CommandSearch,
 		},
 		{
 			Name:    "archive",
