@@ -14,9 +14,9 @@ var (
 // Initialize gowap cli application
 // This function has declaration of commands, options
 func initApp(app *cli.App) *cli.App {
-	app.Name = gowap.AppName
-	app.Usage = gowap.AppUsage
-	app.Version = gowap.AppVersion
+	app.Name = gowap.Name
+	app.Usage = gowap.Usage
+	app.Version = gowap.Version
 	app.Author = gowap.Author
 
 	app.Flags = []cli.Flag{}
