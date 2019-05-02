@@ -31,7 +31,7 @@ func (n *Nuts) Save(nutsPath string) error {
 	base64.StdEncoding.Encode(data, buf)
 
 	log.WithFields(log.Fields{
-		"nuts": filepath.Dir(nutsPath),
+		"nuts": filepath.Base(nutsPath),
 	}).Info("new nuts has been added")
 
 	return ioutil.WriteFile(nutsPath, data, 0644)
